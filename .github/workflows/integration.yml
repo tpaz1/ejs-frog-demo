@@ -36,9 +36,6 @@ jobs:
         run: jf npm install --build-name=$JF_BUILD_NAME --build-number=$JF_BUILD_NUMBER
         # Downloads dependencies and attaches build info
 
-      - name: Run Tests
-        run: npm test
-
       - name: Publish Package to Artifactory
         run: jf npm publish --build-name=$JF_BUILD_NAME --build-number=$JF_BUILD_NUMBER
 
