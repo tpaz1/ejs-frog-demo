@@ -1,6 +1,9 @@
 name: "JFrog Integration Example"
 
-on: push
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
 env:
   JF_BUILD_NAME: ejs-frog-demo-build
