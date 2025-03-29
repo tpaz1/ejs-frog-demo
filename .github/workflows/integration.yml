@@ -45,3 +45,6 @@ jobs:
           jf rt build-add-git $JF_BUILD_NAME $JF_BUILD_NUMBER
           jf rt build-publish $JF_BUILD_NAME $JF_BUILD_NUMBER
         # Captures environment and git metadata, and publishes build info to Artifactory
+
+      - name: Scan Build with Xray
+        run: jf rt build-scan $JF_BUILD_NAME $JF_BUILD_NUMBER
