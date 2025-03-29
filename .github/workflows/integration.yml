@@ -50,4 +50,4 @@ jobs:
         # Captures environment and git metadata, and publishes build info to Artifactory
 
       - name: Scan Build with Xray
-        run: jf bs $JF_BUILD_NAME $JF_BUILD_NUMBER --format=github
+        run: jf bs $JF_BUILD_NAME $JF_BUILD_NUMBER --format=json > scan-result.json
