@@ -4,10 +4,9 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-
-env:
-  JF_BUILD_NAME: ejs-frog-demo-build
-  JF_BUILD_NUMBER: ${{ github.run_number }}
+#env:
+  #JF_BUILD_NAME: ejs-frog-demo-build
+  #JF_BUILD_NUMBER: ${{ github.run_number }}
 
 jobs:
   build:
@@ -36,18 +35,19 @@ jobs:
         # Configures .npmrc globally to resolve and publish through Artifactory
 
       - name: Install Dependencies
-        run: jf npm install --build-name=$JF_BUILD_NAME --build-number=$JF_BUILD_NUMBER
-        # Downloads dependencies and attaches build info
+        run: jf npm install
+        # Downloads dependencies and attaches to build info
 
       - name: Publish Package to Artifactory
-        run: jf npm publish --build-name=$JF_BUILD_NAME --build-number=$JF_BUILD_NUMBER
+        run: jf npm publish
+        # Upload the packeges to Artifactory
 
-      - name: Collect and Publish Build Info With JFrog CLI
-        run: |
-          jf rt build-collect-env $JF_BUILD_NAME $JF_BUILD_NUMBER
-          jf rt build-add-git $JF_BUILD_NAME $JF_BUILD_NUMBER
-          jf rt build-publish $JF_BUILD_NAME $JF_BUILD_NUMBER
+##    - name: Collect and Publish Build Info With JFrog CLI
+##      run: |
+##        jf rt build-collect-env
+##        jf rt build-add-git
+##        jf rt build-publish
         # Captures environment and git metadata, and publishes build info to Artifactory
 
       - name: Scan Build with Xray
-        run: jf bs $JF_BUILD_NAME $JF_BUILD_NUMBER --vuln --fail=false
+        run: jf bs --vuln --fail=false
