@@ -12,6 +12,7 @@ This a demo Express JS application to illustrate how a critical vulnerability ca
 
 Build the project
 
+
 `npm install`
 
 Run it locally
