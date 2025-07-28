@@ -30,8 +30,8 @@ jobs:
       - name: Set CLI npm Config
         run: |
           jf npm-config --global=true \
-            --repo-resolve=tutorial-npm \
-            --repo-deploy=tutorial-npm
+            --repo-resolve=npm-curated-remote \
+            --repo-deploy=npm-local
         # Configures .npmrc globally to resolve and publish through Artifactory
 
       - name: Install Dependencies
