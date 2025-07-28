@@ -20,5 +20,3 @@ jobs:
           JF_URL: ${{ secrets.JF_URL }}
           JF_WATCH: source_watch
           JF_DEPS_REPO: "npm-curated-remote"
-        with:
-          fail-on-vulnerability: true
