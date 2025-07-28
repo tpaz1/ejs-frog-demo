@@ -27,11 +27,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-
-      - name: Download and install JFrog CLI
-        run: |
-          curl -fL https://install-cli.jfrog.io | sh
-          sudo mv jf /usr/local/bin/
+      - name: Setup JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v4
+        id: setup-cli
+        env:
+          JF_URL: ${{ vars.JF_URL }}
 
       - name: Configure JFrog CLI
         run: |
