@@ -14,7 +14,6 @@ env:
   JF_REPO_LOCAL: npm-local
   JF_REPO_REMOTE: npm-remote
   JF_REPO_VIRTUAL: npm
-  JF_NPM_TOKEN: ${{ secrets.JF_NPM_TOKEN }}
 
 jobs:
   build:

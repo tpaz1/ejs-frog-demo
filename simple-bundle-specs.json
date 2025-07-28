@@ -3,7 +3,7 @@
         {
           "aql":{
             "items.find": {
-                "repo":"dro-backend-docker-dev-local",
+                "repo":"tomp-docker-dev-local",
                 "$and": [
                     {
                         "path": {"$match" : "ejs-app/${dockertag}"},
