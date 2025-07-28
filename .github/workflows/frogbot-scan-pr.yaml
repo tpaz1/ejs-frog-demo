@@ -18,5 +18,5 @@ jobs:
           JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JF_URL: ${{ secrets.JF_URL }}
-          JF_WATCH: source_watch
+          JF_WATCHES: source_watch
           JF_DEPS_REPO: "npm-curated-remote"
