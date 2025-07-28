@@ -31,17 +31,17 @@ jobs:
         uses: jfrog/setup-jfrog-cli@v4
         id: setup-cli
         env:
-          JF_URL: ${{ vars.JF_URL }}
+          JF_URL: ${{ secrets.JF_URL }}
 
-      - name: Configure JFrog CLI
-        run: |
-          jf c add my-server \
-            --url="$JF_URL" \
-            --user="$JF_USER" \
-            --password="$JF_PASSWORD" \
-            --interactive=false \
-            --overwrite=true
-        # Configures CLI with Artifactory credentials and base URL
+      # - name: Configure JFrog CLI
+      #   run: |
+      #     jf c add my-server \
+      #       --url="$JF_URL" \
+      #       --user="$JF_USER" \
+      #       --password="$JF_PASSWORD" \
+      #       --interactive=false \
+      #       --overwrite=true
+      #   # Configures CLI with Artifactory credentials and base URL
 
       - name: Configure NPM for JFrog CLI
         run: jf npmc --server-id-resolve=my-server --repo-resolve=$JF_REPO_VIRTUAL
