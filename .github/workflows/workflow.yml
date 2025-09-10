@@ -16,11 +16,13 @@ jobs:
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
         env:
-            JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+            JF_ACCESS_TOKEN: ${{ secrets.JF_PASSWORD }}
+            JF_URL: ${{ secrets.JF_URL }}
       - name: NPM Audit 
         env:
           JFROG_CLI_BUILD_NAME: 'gh-ejs-demo'
-          JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+          JF_ACCESS_TOKEN: ${{ secrets.JF_PASSWORD }}
+          JF_URL: ${{ secrets.JF_URL }}
         run: |
           jf rt bce ${{ env.JFROG_CLI_BUILD_NAME }} $GITHUB_RUN_NUMBER 
           jf rt bag ${{ env.JFROG_CLI_BUILD_NAME }} $GITHUB_RUN_NUMBER
@@ -35,5 +37,6 @@ jobs:
         run: |
           docker build --build-arg JF_TOKEN=${JF_PASSWORD} . -t ejs-demo:$GITHUB_RUN_NUMBER
           docker tag ejs-demo:$GITHUB_RUN_NUMBER $JF_URL/tomp-docker-dev-local/ejs-demo:$GITHUB_RUN_NUMBER
+          jf audit 
           jf docker push $JF_URL/tomp-docker-dev-local/ejs-demo:$GITHUB_RUN_NUMBER --build-name=$JFROG_CLI_BUILD_NAME --build-number=$GITHUB_RUN_NUMBER
           jf rt bp $JFROG_CLI_BUILD_NAME $GITHUB_RUN_NUMBER
