@@ -14,7 +14,7 @@ jobs:
         with:
             node-version: 18
       - name: Setup JFrog CLI
-        uses: jfrog/setup-jfrog-cli@v3
+        uses: jfrog/setup-jfrog-cli@v4
         env:
             JF_ACCESS_TOKEN: ${{ secrets.JF_PASSWORD }}
             JF_URL: ${{ secrets.JF_URL }}
