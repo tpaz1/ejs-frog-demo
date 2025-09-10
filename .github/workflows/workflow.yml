@@ -36,6 +36,6 @@ jobs:
           JF_URL: ${{ secrets.JF_URL }}
         run: |
           docker build --build-arg JF_TOKEN=${JF_PASSWORD} . -t ejs-demo:$GITHUB_RUN_NUMBER
-          docker tag ejs-demo:$GITHUB_RUN_NUMBER $JF_URL/tomp-docker-dev-local/ejs-demo:$GITHUB_RUN_NUMBER
-          jf docker push $JF_URL/tomp-docker-dev-local/ejs-demo:$GITHUB_RUN_NUMBER --build-name=$JFROG_CLI_BUILD_NAME --build-number=$GITHUB_RUN_NUMBER
+          docker tag ejs-demo:$GITHUB_RUN_NUMBER tompazus.jfrog.io/tomp-docker-dev-local/ejs-demo:$GITHUB_RUN_NUMBER
+          jf docker push tompazus.jfrog.io/tomp-docker-dev-local/ejs-demo:$GITHUB_RUN_NUMBER --build-name=$JFROG_CLI_BUILD_NAME --build-number=$GITHUB_RUN_NUMBER
           jf rt bp $JFROG_CLI_BUILD_NAME $GITHUB_RUN_NUMBER
